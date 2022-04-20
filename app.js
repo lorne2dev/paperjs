@@ -1,15 +1,15 @@
 import points from "./data.js";
 
-const drawLine = (canvas, start, end) => {
+const drawLine = (start, end) => {
     const path = new paper.Path();
-    path.strokeColor = "#ff0000";
     const startPt = new paper.Point(start.x, start.y);
     const endPt = new paper.Point(end.x, end.y);
+    path.strokeColor = "#ff0000";
     path.moveTo(startPt);
     path.lineTo(endPt);
 };
 
-const drawCircle = (canvas, point) => {
+const drawCircle = (point) => {
     const radius = 8;
 
     const circle = new paper.Path.Circle(
@@ -36,11 +36,11 @@ const initialiseCanvas = () => {
     paper.setup(canvas);
 
     for (let i = 0; i < points.length - 1; i++) {
-        drawLine(canvas, points[i], points[i + 1]);
+        drawLine(points[i], points[i + 1]);
     }
 
     points.forEach((point) => {
-        drawCircle(canvas, point);
+        drawCircle(point);
     });
 
     paper.view.draw();
